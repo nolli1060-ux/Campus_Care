@@ -29,7 +29,6 @@ export function Booking() {
     const navigate = useNavigate();
     const addAppointment = useAppointmentStore((state) => state.addAppointment);
 
-<<<<<<< HEAD
     // --- Doctor fetch (for display context) ---
     const [doctor, setDoctor] = useState(null);
     const [doctorLoading, setDoctorLoading] = useState(true);
@@ -59,20 +58,10 @@ export function Booking() {
     const [form, setForm] = useState(INITIAL_FORM);
     const [errors, setErrors] = useState({});
     const [submitting, setSubmitting] = useState(false);
-=======
-    const [form, setForm] = useState({
-        studentName: "",
-        idNumber: "",
-        date: "",
-        time: "",
-    });
-    const [validationError, setValidationError] = useState("");
->>>>>>> e91e1ca (Campus-Care)
 
     function handleChange(e) {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
-<<<<<<< HEAD
         // Clear the specific field error as the user types
         if (errors[name]) {
             setErrors((prev) => {
@@ -81,9 +70,6 @@ export function Booking() {
                 return next;
             });
         }
-=======
-        setValidationError("");
->>>>>>> e91e1ca (Campus-Care)
     }
 
     function handleSubmit(e) {
@@ -96,29 +82,8 @@ export function Booking() {
             return; // Don't submit — no request sent
         }
 
-<<<<<<< HEAD
         // Prevent double-click
         setSubmitting(true);
-=======
-        if (!form.date) {
-            setValidationError("Please select an appointment date.");
-            return;
-        }
-
-        if (!form.time) {
-            setValidationError("Please select an appointment time.");
-            return;
-        }
-
-        addAppointment({
-            doctorId: id,
-            studentName: form.studentName,
-            idNumber: form.idNumber,
-            date: form.date,
-            time: form.time,
-            slot: form.time,
-        });
->>>>>>> e91e1ca (Campus-Care)
 
         // Build the appointment record
         const appointmentId = Date.now();
@@ -168,7 +133,6 @@ export function Booking() {
                     <p className="booking-doctor-dept">{doctor.department} · {doctor.description}</p>
                 </div>
 
-<<<<<<< HEAD
                 {/* The form itself — presentational, driven by props */}
                 <BookingForm
                     values={form}
@@ -183,34 +147,6 @@ export function Booking() {
                 </div>
             </div>
         </div>
-=======
-            <div>
-                <label htmlFor="appointment-date">Appointment Date:</label>
-                <input
-                    id="appointment-date"
-                    min={today}
-                    name="date"
-                    onChange={handleChange}
-                    type="date"
-                    value={form.date}
-                />
-            </div>
-
-            <div>
-                <label htmlFor="appointment-time">Appointment Time:</label>
-                <input
-                    id="appointment-time"
-                    name="time"
-                    onChange={handleChange}
-                    type="time"
-                    value={form.time}
-                />
-            </div>
-
-            {validationError && <p className="form-error" role="alert">{validationError}</p>}
-            <button type="submit">Confirm Booking</button>
-        </form>
->>>>>>> e91e1ca (Campus-Care)
     );
 }
 
