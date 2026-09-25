@@ -1,13 +1,4 @@
-/**
- * Booking.jsx — Owner of the booking flow.
- *
- * Responsibilities:
- * 1. Read :id from the route to know which doctor is being booked
- * 2. Fetch that doctor's info to display context
- * 3. Own the form state object
- * 4. On submit: validate → if valid, save to appointments store → navigate to confirmation
- * 5. Disable submit while the operation is in progress (prevents double-click)
- */
+
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useAppointmentStore } from "../appointments/appointmentStore";
